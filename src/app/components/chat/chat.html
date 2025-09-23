@@ -1,1 +1,14 @@
-<p>chat works!</p>
+<div class="chat-wrapper">
+  
+  <div class="messages">
+    <div *ngFor="let m of messages" [class.user]="m.role === 'user'" [class.assistant]="m.role === 'assistant'">
+      <div class="role">{{ m.role }}</div>
+      <div class="bubble">{{ m.content }}</div>
+    </div>
+  </div>
+
+  <form (ngSubmit)="send()" class="composer">
+    <input name="message"  placeholder="Type a message..." autocomplete="off" />
+    <button type="submit" [disabled]="loading">Send</button>
+  </form>
+</div>
